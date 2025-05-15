@@ -3,11 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
-		"start": "next start",
-		"lint": "biome check",
-		"test": "jest"
+		"dev": "yarn run next dev --turbopack",
+		"build": "yarn run next build",
+		"start": "yarn run next start",
+		"lint": "yarn run biome check",
+		"test": "yarn run jest"
 	},
 	"dependencies": {
 		"@tanstack/react-query": "^5.76.1",
@@ -30,5 +30,6 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"ts-jest": "^29.3.3",
 		"typescript": "^5"
-	}
+	},
+	"packageManager": "yarn@4.9.1"
 }
