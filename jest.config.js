@@ -1,9 +1,11 @@
-import { createDefaultPreset } from "ts-jest";
-
-const tsJestTransformCfg = createDefaultPreset().transform;
-
 /** @type {import("jest").Config} **/
-export const testEnvironment = "node";
-export const transform = {
-	...tsJestTransformCfg,
+const config = {
+	preset: "ts-jest",
+	testEnvironment: "jsdom",
+	moduleNameMapper: {
+		"^@/(.*)$": "<rootDir>/src/$1",
+		"\\.css$": "<rootDir>/__mocks__/styleMock.ts",
+	},
 };
+
+export default config;
