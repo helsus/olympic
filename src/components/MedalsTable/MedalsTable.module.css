@@ -1,0 +1,149 @@
+.visuallyHidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.table {
+	--cell-padding: 6px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+
+	thead {
+		th {
+			border-top: 2px solid transparent;
+			border-bottom: 2px solid CanvasText;
+			padding: 4px 0;
+			font-weight: normal;
+			text-align: center;
+
+			&[aria-sort="descending"] {
+				border-top: 2px solid currentColor;
+			}
+
+			&.rank {
+				width: 34px;
+			}
+
+			&.flag {
+				width: 40px;
+			}
+
+			&.medals {
+				width: 60px;
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			border-bottom: 1px solid ButtonBorder;
+
+			th.country {
+				text-align: left;
+				font-weight: normal;
+				padding: var(--cell-padding);
+			}
+
+			td {
+				vertical-align: middle;
+				padding: var(--cell-padding);
+
+				&.center {
+					text-align: center;
+				}
+
+				&.right {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	.skeletonRow {
+		td,
+		th {
+			padding: var(--cell-padding);
+			vertical-align: middle;
+		}
+
+		.skeletonItem {
+			background-color: ButtonFace;
+			border-radius: 4px;
+			animation: pulseAnimation 1.5s infinite ease-in-out;
+			height: 1rem;
+			width: 100%;
+		}
+	}
+}
+
+.medalButton {
+	--background: transparent;
+	--radius: 100%;
+	--border-color: transparent;
+	border: none;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	appearance: none;
+	min-width: 1.2rem;
+	min-height: 1.2rem;
+	background: var(--background);
+	border-radius: var(--radius);
+	border: 1px solid var(--border-color);
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+	padding: 0.25em 0.5em;
+	transition: box-shadow 0.2s ease, transform 0.1s ease;
+
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+
+	&:active {
+		transform: translateY(1px);
+	}
+
+	&.bronze {
+		--background: #88540b;
+	}
+
+	&.silver {
+		--background: silver;
+	}
+
+	&.gold {
+		--background: gold;
+	}
+
+	&.total {
+		--radius: 4px;
+	}
+}
+
+.noDataCell {
+	text-align: center;
+	padding: 20px;
+	color: GrayText;
+}
+
+@keyframes pulseAnimation {
+	0% {
+		background-color: ButtonFace;
+	}
+	50% {
+		background-color: ButtonHighlight;
+	}
+	100% {
+		background-color: ButtonFace;
+	}
+}

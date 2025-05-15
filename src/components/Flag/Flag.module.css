@@ -1,0 +1,9 @@
+.flag {
+	background-image: url("/flags.png");
+	background-repeat: no-repeat;
+	width: 28px;
+	height: 17px;
+	display: block;
+	vertical-align: middle;
+	background-position: var(--flag-pos, 0px 0px);
+}
