@@ -49,7 +49,7 @@ export function MedalsTable({ sourceUrl, sortKey, onSort }: MedalsTableProps) {
 								[styles.sorted]: !isLoading && sortKey === column.key,
 							})}
 							aria-label={`Sort by ${column.key} medals`}
-							aria-pressed={!isLoading && sortKey === column.key}
+							aria-pressed={sortKey === column.key}
 							disabled={isLoading}
 						>
 							{column.label}
@@ -78,7 +78,7 @@ export function MedalsTable({ sourceUrl, sortKey, onSort }: MedalsTableProps) {
 					medals &&
 					medals.length > 0 &&
 					medals.map((medal, index) => (
-						<tr key={medal.code}>
+						<tr key={medal.code} aria-label={`Medals of ${medal.code}`}>
 							<td className={styles.right}>{index + 1}</td>
 							<td>
 								<Flag code={medal.code} />
@@ -86,10 +86,28 @@ export function MedalsTable({ sourceUrl, sortKey, onSort }: MedalsTableProps) {
 							<th className={styles.country} scope="row">
 								{medal.code}
 							</th>
-							<td className={styles.center}>{medal.gold}</td>
-							<td className={styles.center}>{medal.silver}</td>
-							<td className={styles.center}>{medal.bronze}</td>
-							<td className={styles.center}>
+							<td
+								aria-label={`${medal.code} have ${medal.gold} gold medals`}
+								className={styles.center}
+							>
+								{medal.gold}
+							</td>
+							<td
+								aria-label={`${medal.code} have ${medal.silver} silver medals`}
+								className={styles.center}
+							>
+								{medal.silver}
+							</td>
+							<td
+								aria-label={`${medal.code} have ${medal.bronze} bronze medals`}
+								className={styles.center}
+							>
+								{medal.bronze}
+							</td>
+							<td
+								aria-label={`${medal.code} have ${medal.total} total medals`}
+								className={styles.center}
+							>
 								<strong>{medal.total}</strong>
 							</td>
 						</tr>
